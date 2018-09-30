@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE>
+<html>
+<head>
+	<style type="text/css">
+		.lang-icon{
+  position: absolute !important;
+  right: 0;
+  top: 0;
+}
+
+	</style>
+        {% load static %}
+        <title>Quiz</title>
+ 		
+</head>
+<body>
+	
+	<nav class="navbar">
+		<ul class="navbar-nav">
+			             <li><a href="{% url 'home' %}">Home</a></li>		
+						<li><a href="/mini">My Result</a></li>	
+			            <li class="lang-icon" style="float:right;margin-right:25px"><a href="{% url 'logout' %}">Logout</a></li>
+		</ul>
+	</nav>
+</body>
+</html>

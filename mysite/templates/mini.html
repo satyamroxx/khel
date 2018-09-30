@@ -1,0 +1,71 @@
+{% include "header.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            body
+        {
+            background-image:url("https://images.wallpaperscraft.com/image/color_surface_light_background_50561_1280x720.jpg");            
+            background-size:cover;
+        }
+        .hone11
+{
+    color:#a71428;
+    font-family: 'Lora', serif;
+    font-size:46px
+}
+        
+        </style>
+    	{% load static %}
+        <title>Result</title>
+ 		<link rel="stylesheet" type="text/css" href={% static 'style.css' %}> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>      
+    </head>
+    <body>
+        <div align="center">
+          <h1 class ="hone11">Results !!!</h1>
+          <br></br>
+        </div>  
+    <table align="center" class="productTable">
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>MARKS</th>
+                <th>SUBJECT</th>
+                <th>DATE</th>
+            </tr>  
+        </thead>
+        </tr> {% for item in contacts %} <tr> 
+                <td>{{ item.sid }}</td>
+                <td>{{ item.marks }}</td> 
+                <td>{{ item.subject }}</td> 
+                <td>{{ item.tdate }}</td> 
+            </tr> {% endfor %} 
+
+    </table>
+    <center>
+        <div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <b><a href="?page={{ contacts.previous_page_number }}">previous</a><b>
+        {% endif %}
+
+        <span class="current">
+           <b> Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.</b>
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ contacts.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+    </center>
+          
+    </body>
+    
+</html>

@@ -1,0 +1,53 @@
+{% include "header.html" %}
+{% block content %}
+  {% load static %}
+  
+
+<!DOCTYPE >
+<html>
+<head>
+  {% load static %}
+  
+  <style type="text/css">
+    body
+        {
+            background-image:url("https://images.wallpaperscraft.com/image/color_surface_light_background_50561_1280x720.jpg");            
+            background-size:cover;
+        }
+  </style>
+<title>Home</title>
+ <link rel="stylesheet" type="text/css" href={% static 'style.css' %}> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body >
+
+
+<div align="center">
+
+<h1 class ="hone">Welcome {{user.username|capfirst }}, To Online Quiz</h1>
+
+
+<br></br>
+<button  class="button button1 " onclick="document.location.href='/csq'"><b>C#</b></button>
+<br></br>
+<button class="button button1 " onclick="document.location.href='/cq'" ><b>C</b></button>
+<br></br>
+<button class="button button1 " onclick="document.location.href='/cppq'"><b>C++</b></button>
+<br></br>
+<button class="button button1 " onclick="document.location.href='/javaq'"><b>JAVA</b></button>
+<br></br>
+<button class="button button1 " onclick="document.location.href='/pythonq'"><b>PYTHON</b></button>
+
+</div>
+
+</body>
+
+
+
+</html>
+
+
+{% endblock %}

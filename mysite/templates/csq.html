@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+
+{% load static %}
+  <script src="{% static 'backNoWork.js' %}"></script>
+           <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Quiz</title>
+         <link rel="stylesheet" type="text/css" href={% static 'styleee.css' %}> 
+    </head>
+    
+    <body >
+    {% csrf_token %}
+    <span id="remainingTime" style="position: fixed;font-size: 23px;background:#ff3300;border-radius: 5px;padding: 10px;box-shadow: 2px 2px 2px 0px;"></span>
+    
+ <script>
+    var time = 1;
+    time--;
+    var sec=60;                    
+    document.getElementById("remainingTime").innerHTML =  time+" : "+sec;
+       //it calls fuction after specific time again and again                  
+   var x= window.setInterval(timerFunction, 1000);
+function timerFunction(){
+        sec--;
+  if (time < 0) {
+    clearInterval(x);
+    document.getElementById("remainingTime").innerHTML = "00 : 00";
+    document.getElementById("myform").submit();
+  }
+  document.getElementById("remainingTime").innerHTML =" Time Left  "+  time+" : "+sec;
+if(sec==0)
+{
+    sec=60;
+    time--;    
+}
+}
+</script>
+
+        <form id="myform" action="/csr/"  method="post">
+        {% csrf_token %}
+            <center><h1 class ="hone">Online Quiz</h1></center>
+           
+<hr/>
+<br>
+    {% for item in query_results %}
+    
+                        <div class="question-panel">
+            <div class="question" >
+            <label class="question-label">{{ item.QUESTION_NO }}</label>
+           <b>{{ item.QUESTION }}</b>
+           </div>
+           <ol  class ="op" type='A'>
+      <br><b><li ><input type='radio' name="java{{item.QUESTION_NO}}" value='1' />{{item.OPTION1}}<br><br></li></b>
+      <br><b><li ><input type='radio' name="java{{item.QUESTION_NO}}" value='2' />{{item.OPTION2}}<br><br></li></b>
+      <br><b><li ><input type='radio' name="java{{item.QUESTION_NO}}" value='3'  />{{item.OPTION3}}<br><br></li></b>
+      <br><b><li ><input type='radio' name="java{{item.QUESTION_NO}}" value='4'  />{{item.OPTION4}}<br><br></li></b>
+           </ol>
+           <hr/>
+                     
+           </div>
+      
+    
+      {% endfor %}
+    
+     
+    
+     <center><input type="submit" value="Submit" onclick="return ValidateForm(this.form)"></center>
+</form>
+<script>
+timer();
+</script>
+    </body>
+
+</html>
